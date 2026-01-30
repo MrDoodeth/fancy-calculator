@@ -1,0 +1,16 @@
+@use "sass:math";
+
+@function liquid($start, $end) {
+  $START_WIDTH: 250;
+  $END_WIDTH: 1920;
+
+  $START_WIDTH: math.div($START_WIDTH, 16);
+  $END_WIDTH: math.div($END_WIDTH, 16);
+  $start: math.div($start, 16);
+  $end: math.div($end, 16);
+
+  $k: math.div($end - $start, $END_WIDTH - $START_WIDTH);
+  $b: $start - $k * $START_WIDTH;
+
+  @return clamp(#{$start * 1rem}, #{100vw * $k} + #{$b * 1rem}, #{$end * 1rem});
+}
