@@ -1,0 +1,49 @@
+@use "utils" as *;
+
+@font-face {
+  src: url("/src/fonts/Jaro-Regular.woff2") format("woff2");
+  font-family: Jaro;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:where([fill]:not(
+  [fill="none"],
+  [fill^="url"],
+  [fill^="#"]
+)) {
+  fill: currentColor;
+}
+
+:where([stroke]:not(
+  [stroke="none"],
+  [stroke^="url"],
+  [stroke^="#"]
+)) {
+  stroke: currentColor;
+}
+
+:root {
+  --main-font: Jaro;
+  --red-color: #d91d23;
+  --black-color: #000;
+
+}
+
+:root[data-theme="dark"] {
+  --background-color: black;
+}
+
+:root[data-theme="light"] {
+  --background-color: white;
+}
+
+* {
+  transition: all 100ms ease-in-out;
+}
+
+body {
+  font-family: var(--main-font), sans-serif;
+  background-color: var(--background-color);
+}

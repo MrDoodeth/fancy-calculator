@@ -1,0 +1,13 @@
+@mixin hover($useEffectOnMobile: false) {
+  @if ($useEffectOnMobile) {
+    &:hover {
+      @content;
+    }
+  } @else {
+    @media (any-hover: hover) {
+      &:hover {
+        @content;
+      }
+    }
+  }
+}
