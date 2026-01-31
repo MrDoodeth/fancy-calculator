@@ -1,0 +1,18 @@
+@use "/src/styles/utils" as *;
+
+.logo {
+  display: inline-flex;
+  column-gap: 5px;
+  align-items: center;
+  text-decoration: none;
+  color: var(--line-color);
+
+  &__header {
+    font-family: var(--main-font), sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+
+    line-height: 1;
+    text-align: center;
+  }
+}

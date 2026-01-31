@@ -26,17 +26,24 @@
 
 :root {
   --main-font: Jaro;
+
   --red-color: #d91d23;
   --black-color: #000;
+  --gray-color: #252525;
+  --white-color: #FFF;
 
+  --container-inline-padding: 13px;
+  --container-width: 450px;
 }
 
 :root[data-theme="dark"] {
-  --background-color: black;
+  --background-color: var(--gray-color);
+  --line-color: var(--white-color)
 }
 
 :root[data-theme="light"] {
-  --background-color: white;
+  --background-color: var(--white-color);
+  --line-color: var(--black-color)
 }
 
 * {
