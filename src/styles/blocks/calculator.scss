@@ -1,0 +1,51 @@
+@use "/src/styles/utils" as *;
+
+.calculator {
+  border-radius: 25px;
+  padding: 13px;
+  width: 100%;
+  height: min(80%, 550px);
+
+  box-shadow: 0 0 30px 2px $shadow-color;
+  background-color: var(--background-color);
+
+  display: grid;
+  grid-template-rows: 20.7% 1fr;
+  row-gap: 13px;
+
+  &__screen {
+    border-radius: 16px;
+    height: 100%;
+    box-shadow: inset 0 0 10px 0 $shadow-color;
+    background: var(--grin-color-hex);
+  }
+
+  &__button {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(5, 1fr);
+    gap: 10px;
+
+    button {
+      padding: 0;
+      text-align: center;
+      border-radius: 14px;
+      border: none;
+      box-shadow: 0 0 8px 0 $shadow-color;
+      background-color: var(--background-color);
+      color: var(--line-color);
+
+      font-family: var(--main-font), sans-serif;
+      font-weight: 400;
+      font-size: liquid(25, 50);
+      line-height: 1;
+    }
+
+    [data-js-calculator-button="+"] {
+      grid-row: span 2;
+    }
+
+    [data-js-calculator-button*="ce" i] {
+      color: var(--red-color-hex);
+    }
+  }
+}

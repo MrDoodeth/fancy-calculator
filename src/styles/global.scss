@@ -27,23 +27,30 @@
 :root {
   --main-font: Jaro;
 
-  --red-color: #d91d23;
-  --black-color: #000;
-  --gray-color: #252525;
-  --white-color: #FFF;
+  --red-color-hex: #d91d23;
+  --black-color-hex: #000;
+  --black-color-rgb: 0 0 0;
+  --white-color-hex: #FFF;
+  --white-color-rgb: 255 255 255;
+  --gray-color-hex: #252525;
+  --grin-color-hex: #659a54;
 
   --container-inline-padding: 13px;
   --container-width: 450px;
 }
 
 :root[data-theme="dark"] {
-  --background-color: var(--gray-color);
-  --line-color: var(--white-color)
+  --background-color: var(--gray-color-hex);
+  --line-color: var(--white-color-hex);
+  --shadow-color: var(--white-color-rgb);
+  --shadow-opacity: 0.2;
 }
 
 :root[data-theme="light"] {
-  --background-color: var(--white-color);
-  --line-color: var(--black-color)
+  --background-color: var(--white-color-hex);
+  --line-color: var(--black-color-hex);
+  --shadow-color: var(--black-color-rgb);
+  --shadow-opacity: 0.2;
 }
 
 * {
@@ -53,4 +60,17 @@
 body {
   font-family: var(--main-font), sans-serif;
   background-color: var(--background-color);
+  color: var(--line-color);
+
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    flex: 1 0 auto;
+  }
+}
+
+main {
+  display: grid;
+  place-items: center;
 }

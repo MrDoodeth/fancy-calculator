@@ -62,8 +62,8 @@
       href="/src/favicons/site.webmanifest"
   >
 </head>
-<body>
-<header class="header container">
+<body class="container">
+<header class="header">
   <a href="/" class="logo header__logo">
     <svg width="79" height="79" viewBox="0 0 79 79" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -102,8 +102,8 @@
     </svg>
     <h1 class="logo__header">Fancy Calculator</h1>
   </a>
-  <button type="button" class="header__switch-theme-button is-dark" data-js-theme-button>
-    <span class="header__switch-theme-button-icon-container">
+  <button type="button" class="header__theme-button switch-theme-button is-dark" data-js-theme-button>
+    <span class="switch-theme-button-icon-container">
       <svg viewBox="0 0 24.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
@@ -134,35 +134,32 @@
     </span>
   </button>
 </header>
-<main class="container">
+<main>
   <div class="calculator">
     <div class="calculator__screen">
     </div>
     <div class="calculator__button">
-      <button type="button" class="calculator__button-7">7</button>
-      <button type="button" class="calculator__button-8">8</button>
-      <button type="button" class="calculator__button-7">9</button>
-      <button type="button" class="calculator__button-ce">CE</button>
-      <button type="button" class="calculator__button-c">C</button>
-      <button type="button" class="calculator__button-4">4</button>
-      <button type="button" class="calculator__button-5">5</button>
-      <button type="button" class="calculator__button-6">6</button>
-      <button type="button" class="calculator__button-divide">÷</button>
-      <button type="button" class="calculator__button-multiply">×</button>
-      <button type="button" class="calculator__button-1">1</button>
-      <button type="button" class="calculator__button-2">2</button>
-      <button type="button" class="calculator__button-3">3</button>
-      <button type="button" class="calculator__button-sum">+</button>
-      <button type="button" class="calculator__button-sabtract">-</button>
-      <button type="button" class="calculator__button-0">0</button>
-      <button type="button" class="calculator__button-dot">.</button>
-      <button type="button" class="calculator__button-remainder-of-devide">%</button>
-      <button type="button" class="calculator__button-result">=</button>
+      <button type="button" data-js-calculator-button="7">7</button>
+      <button type="button" data-js-calculator-button="8">8</button>
+      <button type="button" data-js-calculator-button="9">9</button>
+      <button type="button" data-js-calculator-button="CE">CE</button>
+      <button type="button" data-js-calculator-button="C">C</button>
+      <button type="button" data-js-calculator-button="4">4</button>
+      <button type="button" data-js-calculator-button="5">5</button>
+      <button type="button" data-js-calculator-button="6">6</button>
+      <button type="button" data-js-calculator-button="/">÷</button>
+      <button type="button" data-js-calculator-button="*">×</button>
+      <button type="button" data-js-calculator-button="1">1</button>
+      <button type="button" data-js-calculator-button="2">2</button>
+      <button type="button" data-js-calculator-button="3">3</button>
+      <button type="button" data-js-calculator-button="+">+</button>
+      <button type="button" data-js-calculator-button="-">-</button>
+      <button type="button" data-js-calculator-button="0">0</button>
+      <button type="button" data-js-calculator-button=".">.</button>
+      <button type="button" data-js-calculator-button="%">%</button>
+      <button type="button" data-js-calculator-button="=">=</button>
     </div>
   </div>
 </main>
-<footer>
-
-</footer>
 </body>
 </html>
