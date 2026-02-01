@@ -38,6 +38,15 @@
       font-weight: 400;
       font-size: liquid(25, 50);
       line-height: 1;
+
+      @include hover {
+        scale: 1.05;
+      }
+
+      &:active {
+        scale: 0.95;
+        box-shadow: 0 0 $shadow-color;
+      }
     }
 
     [data-js-calculator-button="+"] {
