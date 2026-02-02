@@ -18,7 +18,7 @@ export default class ThemeButton {
     }
 
     setTheme(theme) {
-        document.documentElement.setAttribute("data-theme", theme)
+        document.documentElement.dataset.theme = theme;
         this.button.classList.toggle("is-dark", theme === "dark")
         this.theme = theme
         localStorage.setItem(this.localStorageKey, theme)
