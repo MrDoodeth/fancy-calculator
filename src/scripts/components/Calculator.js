@@ -15,7 +15,8 @@ export default class Calculator {
 
     reset() {
         this.expressions = [{
-            type: "number"
+            type: "number",
+            value: "0"
         }]
         this.currentLine = '';
     }
@@ -39,7 +40,7 @@ export default class Calculator {
                     this.currentLine = data
                 }
             }
-        } else if (this.currentLine.at(-1) !== '.' && this.currentLine.at(-1) !== '-') {
+        } else if (this.currentLine !== "" && this.currentLine.at(-1) !== '.' && this.currentLine.at(-1) !== '-') {
             if ("+-÷×%".includes(data)) {
                 if (lastExpression.type === "operation") {
                     lastExpression.value = data;
@@ -78,6 +79,7 @@ export default class Calculator {
         }
 
         this.updateUI()
+        console.dir(this.expressions)
     }
 
     updateUI() {
@@ -105,10 +107,14 @@ export default class Calculator {
             }
 
             const result = this.expressions[0].value
+
+            if (["Infinite", "-Infinity", "NaN"].some((incorrectValue) => result === incorrectValue)) {
+                return "Error"
+            }
+
             this.reset()
             return result
         } catch (error) {
-            console.error(error)
             return "Error"
         }
     }
