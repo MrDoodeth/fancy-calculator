@@ -108,7 +108,7 @@ export default class Calculator {
 
             const result = this.expressions[0].value
 
-            if (["Infinite", "-Infinity", "NaN"].some((incorrectValue) => result === incorrectValue)) {
+            if (["Infinity", "-Infinity", "NaN"].some((incorrectValue) => result === incorrectValue)) {
                 return "Error"
             }
 
