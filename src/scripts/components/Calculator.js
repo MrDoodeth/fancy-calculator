@@ -23,6 +23,9 @@ export default class Calculator {
 
     buttonHandler = (event) => {
         const data = event.currentTarget.getAttribute(this.selectors.button.slice(1, -1));
+        if (this.currentLine === "Error") {
+            this.reset()
+        }
         const lastExpression = this.expressions.at(-1)
 
         if ("0123456789".includes(data) ||
@@ -79,7 +82,6 @@ export default class Calculator {
         }
 
         this.updateUI()
-        console.dir(this.expressions)
     }
 
     updateUI() {
@@ -95,26 +97,27 @@ export default class Calculator {
 
     parseExpressions() {
         try {
-            const priorityOfOperations = ['×', "÷", '%', '+', "-"]
+            const operationGroups = [['×', '÷', '%'], ['+', '-']]
 
-            for (const operation of priorityOfOperations) {
-                for (let i = 0; i < this.expressions.length; i++) {
-                    const element = this.expressions[i];
-                    if (element.type === "operation" && element.value === operation) {
-                        this.parseOperation(i, operation)
+            for (const operations of operationGroups) {
+                for (let i = 1; i < this.expressions.length - 1;) {
+                    const element = this.expressions[i]
+                    if (element.type === "operation" && operations.includes(element.value)) {
+                        this.parseOperation(i, element.value)
+                        i = Math.max(1, i - 2)
+                    } else {
+                        i += 2
                     }
                 }
             }
 
-            const result = this.expressions[0].value
-
-            if (["Infinity", "-Infinity", "NaN"].some((incorrectValue) => result === incorrectValue)) {
-                return "Error"
-            }
+            const result = Number(this.expressions[0].value)
+            if (!Number.isFinite(result)) throw new Error("Invalid result")
 
             this.reset()
-            return result
+            return Number.isInteger(result) ? result.toFixed(0) : result.toFixed(2)
         } catch (error) {
+            this.reset()
             return "Error"
         }
     }
@@ -142,21 +145,13 @@ export default class Calculator {
                 break
         }
 
-        if (Number.isInteger(result)) {
-            result = result.toFixed(0)
-        } else {
-            result = result.toFixed(2)
-        }
+        if (!Number.isFinite(result)) throw new Error("Invalid operation")
 
         this.expressions.splice(index, 2)
         this.expressions[index - 1].value = result
     }
 
-    parseNumber(stringOfNumber) {
-        if (stringOfNumber.includes('.')) {
-            return parseFloat(stringOfNumber)
-        } else {
-            return parseInt(stringOfNumber)
-        }
+    parseNumber(value) {
+        return Number(value)
     }
 }
